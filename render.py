@@ -49,6 +49,9 @@ def ellipse(x, y, w, h, color):
 
 def lead_art():
     box(662, 154, 326, 280, '#204559')
+    # A narrow dateline rail gives the lead illustration a clear editorial frame.
+    box(662, 154, 5, 240, '#ecb559')
+    box(670, 154, 318, 4, '#5c9ed0')
     ellipse(742, 184, 156, 156, '#ecb559')
     for points in [[(662, 266), (714, 292), (768, 304), (825, 288), (888, 314), (943, 301), (988, 318)],
                    [(662, 282), (714, 308), (768, 320), (825, 306), (888, 331), (943, 317), (988, 331)]]:
@@ -69,6 +72,7 @@ def lead_art():
                      ((-46, 170), (35, 115)), ((46, 170), (-35, 115))]:
             line([point(*a), point(*b)], '#0b2835', 4)
     box(662, 394, 326, 40, '#0e2b3a')
+    box(662, 394, 5, 40, '#ecb559')
     box(682, 403, 27, 10, '#5c9ed0')
     box(682, 413, 27, 10, '#ecb559')
     text(724, 405, 'UKRAINE / POWER GRID', 20, '#fcdb93', end=982)
@@ -110,21 +114,25 @@ def icon(kind, x, y, bg, mark):
 
 def card(x, y, kind, tag, headline, detail, bg, accent):
     edge = x + 466
-    box(x, y, 466, 3, bg)
+    box(x, y, 466, 4, bg)
+    box(x, y + 4, 52, 2, accent)
     icon(kind, x, y + 15, bg, accent)
     text(x + 102, y + 16, tag, 21, bg, end=edge)
     for i, words in enumerate(headline):
         text(x + 102, y + 44 + 38 * i, words, 37, serif=True, end=edge)
     for i, words in enumerate(detail):
         text(x + 102, y + 121 + 30 * i, words, 26, MUTED, bold=False, end=edge)
+    box(edge - 30, y + 166, 30, 2, bg)
 
 
 def compose():
-    box(36, 27, 952, 5, INK)
+    box(36, 27, 952, 6, INK)
     text(36, 47, 'The World Brief', 73, serif=True)
-    text(652, 51, 'FRIDAY', 27, '#9d382a')
-    text(652, 84, '20 NOVEMBER 2026', 34, end=989)
+    text(652, 51, 'FRIDAY  ·  EDITION 47', 24, '#9d382a')
+    text(652, 83, '20 NOVEMBER 2026', 34, end=989)
     box(36, 130, 952, 3, INK)
+    box(36, 137, 952, 2, '#ecb559')
+    text(36, 141, 'SIX STORIES  /  ONE WORLD', 17, MUTED, end=300)
     box(36, 154, 626, 280, INK)
     text(60, 174, '01  /  EUROPE · WAR', 25, '#fcdb93')
     text(60, 214, 'Russia strikes', 59, PAPER, serif=True)
@@ -140,13 +148,16 @@ def compose():
          ('Deals cover food trade', 'and youth mobility.'), '#694963', '#f3bd58')
     card(522, 641, 'markets', '05  /  GLOBAL MARKETS', ('AI selloff drags', 'world stocks lower'),
          ('Anthropic’s IPO fails', 'to stem tech rout.'), '#8b3c35', '#f5bc52')
-    box(36, 825, 952, 3, '#633a2e')
+    box(36, 825, 952, 105, '#f0e8d5')
+    box(36, 825, 952, 4, '#633a2e')
+    box(36, 829, 6, 101, '#ecb559')
     icon('people', 36, 843, '#633a2e', '#f3bd58')
     text(139, 842, '06  /  DISPLACEMENT', 21, '#633a2e')
     text(139, 872, 'Malaysia plans to resettle 10,000 Rohingya', 39, serif=True)
     text(139, 921, 'The refugees would be relocated to Türkiye.', 26, MUTED, bold=False)
     box(36, 967, 952, 2, INK)
     text(36, 982, 'REPORTING  /  REUTERS · THE GUARDIAN', 20, MUTED)
+    text(884, 982, 'WB / 47', 20, MUTED, end=988)
 
 
 if __name__ == '__main__':
